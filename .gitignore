@@ -1,0 +1,77 @@
+# Large datasets
+dataset/*
+!dataset/README.md
+
+# Large generated training data
+data/X_CNN.pkl
+
+# Large model files (VGG16 CNNs are ~170 MB each, over GitHub's 100 MB limit)
+models/cnn_*.keras
+
+# Tuning-trial outputs (regenerable with the scripts; every score is in logs/*.jsonl and tuning_log.md).
+# The frozen Stage 1 outputs used by freeze_results.py stay tracked:
+data/*_outputs.pkl
+data/stack_*.pkl
+!data/mfe_x3_cw0_outputs.pkl
+!data/mfe_x3_cw0_s1_outputs.pkl
+!data/mfe_x3_cw0_s2_outputs.pkl
+!data/cnn_imnet_cw0_aug_outputs.pkl
+!data/stack_FINAL_*.pkl
+!data/stack_B1_*.pkl
+!data/stack_final_mlr_A_s0.pkl
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+# Stage 2 outputs used by extensions_results.py / compare.py / calibrate.py stay tracked
+# (the 60 XGB-selection stacks S3sel_* are not: their scores are in logs/stack_trials.jsonl):
+!data/mfe_cw0_5s*_outputs.pkl
+!data/cnn_imnet_cw0_aug_tta_outputs.pkl
+!data/xgb_d6_lr05_cw1_outputs.pkl
+!data/stack_S2_*.pkl
+!data/stack_S2tta_*.pkl
+!data/stack_S3_*.pkl
+!data/stack_ctl*.pkl
+!data/stack_cv_S2_*.pkl
+!data/stack_cv_S2tta_*.pkl
+!data/stack_cv_S3_*.pkl
+!data/stack_cv_ctl*.pkl
+# Stage 2b: outputs needed by extensions_results.py / nsweep.py / predict.py --verify stay tracked
+!data/cnn_imnet_cw0_aug_s*_outputs.pkl
+!data/cnn_imnet_cw0_aug_s*_tta_outputs.pkl
+!data/cnn_ens5_tta_outputs.pkl
+!data/cnn_multinn_outputs.pkl
+!data/stack_e5_*.pkl
+!data/stack_cv_e5_*.pkl
+!data/stack_FINAL_stack_dt_*.pkl
+!data/stack_S2_dt_*.pkl
+!data/stack_cv_S2_dt_*.pkl
+data/final_predictions.pkl
+# XGB bagging models (rejected, 43 MB each) are not kept in git; the chosen XGB model is
+models/xgb_*_bag_*.json
+# Part D: local LaTeX engine (Tectonic release binary) and LaTeX by-products
+tools/
+research_paper/paper/*.aux
+research_paper/paper/*.log
+research_paper/paper/*.out
+research_paper/paper/*.nav
+research_paper/paper/*.snm
+research_paper/paper/*.toc
+research_paper/paper/*.bbl
+research_paper/paper/*.blg
+
+# Local transfer bundle of the large files above (+ its checksum list)
+local_backup/
+
+# Kept local only: slides, viva notes, project docs
+research_paper/slides/
+research_paper/viva/
+docs/

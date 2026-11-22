@@ -1,0 +1,3 @@
+[submodule "third_party/wafermap_MultiNN"]
+	path = third_party/wafermap_MultiNN
+	url = https://github.com/DMkelllog/wafermap_MultiNN.git
